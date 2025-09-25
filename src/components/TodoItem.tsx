@@ -143,7 +143,19 @@ export const TodoItem = ({ todo, onToggle, onUpdate, onDelete }: TodoItemProps) 
   const [isEditing, setIsEditing] = useState(false);
   const [editTitle, setEditTitle] = useState(todo.title);
   const [editDescription, setEditDescription] = useState(todo.description);
-  const { colors } = useTheme();
+  const { mode } = useTheme();
+
+  // Define colors based on mode
+  const colors = {
+    background: {
+      primary: mode === 'dark' ? 'bg-gray-800' : 'bg-white',
+    },
+    border: mode === 'dark' ? 'border-gray-700' : 'border-gray-200',
+    text: {
+      primary: mode === 'dark' ? 'text-white' : 'text-gray-900',
+      secondary: mode === 'dark' ? 'text-gray-300' : 'text-gray-600',
+    },
+  };
 
   const handleSave = () => {
     if (editTitle.trim()) {

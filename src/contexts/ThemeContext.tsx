@@ -1,189 +1,67 @@
-// import { createContext, useState, useMemo, useContext, ReactNode } from "react";
+// import { createContext, useState, useContext, ReactNode } from "react";
 
-// // Color design tokens
-// export const tokens = (mode: 'light' | 'dark') => ({
-//   ...(mode === 'dark'
-//     ? {
-//         grey: {
-//           100: "#e0e0e0",
-//           200: "#c2c2c2",
-//           300: "#a3a3a3",
-//           400: "#858585",
-//           500: "#666666",
-//           600: "#525252",
-//           700: "#3d3d3d",
-//           800: "#292929",
-//           900: "#141414"
-//         },
-//         primary: {
-//           100: "#d0d1d5",
-//           200: "#a1a4ab",
-//           300: "#727681",
-//           400: "#434957",
-//           500: "#141b2d",
-//           600: "#101624",
-//           700: "#0c101b",
-//           800: "#080b12",
-//           900: "#040509"
-//         },
-//         greenAccent: {
-//           100: "#dbf5ee",
-//           200: "#b7ebde",
-//           300: "#94e2cd",
-//           400: "#70d8bd",
-//           500: "#4cceac",
-//           600: "#3da58a",
-//           700: "#2e7c67",
-//           800: "#1e5245",
-//           900: "#0f2922"
-//         },
-//         redAccent: {
-//           100: "#f8dcdb",
-//           200: "#f1b9b7",
-//           300: "#e99592",
-//           400: "#e2726e",
-//           500: "#db4f4a",
-//           600: "#af3f3b",
-//           700: "#832f2c",
-//           800: "#58201e",
-//           900: "#2c100f"
-//         },
-//         blueAccent: {
-//           100: "#e1e2fe",
-//           200: "#c3c6fd",
-//           300: "#a4a9fc",
-//           400: "#868dfb",
-//           500: "#6870fa",
-//           600: "#535ac8",
-//           700: "#3e4396",
-//           800: "#2a2d64",
-//           900: "#151632"
-//         },
-//       }
-//     : {
-//         grey: {
-//           100: "#141414",
-//           200: "#292929",
-//           300: "#3d3d3d",
-//           400: "#525252",
-//           500: "#666666",
-//           600: "#858585",
-//           700: "#a3a3a3",
-//           800: "#c2c2c2",
-//           900: "#e0e0e0",
-//         },
-//         primary: {
-//           100: "#040509",
-//           200: "#080b12",
-//           300: "#0c101b",
-//           400: "#f2f0f0",
-//           500: "#141b2d",
-//           600: "#434957",
-//           700: "#727681",
-//           800: "#a1a4ab",
-//           900: "#d0d1d5",
-//         },
-//         greenAccent: {
-//           100: "#0f2922",
-//           200: "#1e5245",
-//           300: "#2e7c67",
-//           400: "#3da58a",
-//           500: "#4cceac",
-//           600: "#70d8bd",
-//           700: "#94e2cd",
-//           800: "#b7ebde",
-//           900: "#dbf5ee",
-//         },
-//         redAccent: {
-//           100: "#2c100f",
-//           200: "#58201e",
-//           300: "#832f2c",
-//           400: "#af3f3b",
-//           500: "#db4f4a",
-//           600: "#e2726e",
-//           700: "#e99592",
-//           800: "#f1b9b7",
-//           900: "#f8dcdb",
-//         },
-//         blueAccent: {
-//           100: "#151632",
-//           200: "#2a2d64",
-//           300: "#3e4396",
-//           400: "#535ac8",
-//           500: "#6870fa",
-//           600: "#868dfb",
-//           700: "#a4a9fc",
-//           800: "#c3c6fd",
-//           900: "#e1e2fe",
-//         },
-//       }),
-// });
-
-// // Theme settings
-// export const themeSettings = (mode: 'light' | 'dark') => {
-//   const colors = tokens(mode);
-
-//   return {
-//     colors,
-//     mode,
-//     ...(mode === 'dark'
-//       ? {
-//           background: {
-//             primary: colors.primary[500],
-//             secondary: colors.primary[600],
-//           },
-//           text: {
-//             primary: colors.grey[100],
-//             secondary: colors.grey[300],
-//           },
-//           border: colors.grey[700],
-//         }
-//       : {
-//           background: {
-//             primary: "#fcfcfc",
-//             secondary: colors.primary[100],
-//           },
-//           text: {
-//             primary: colors.grey[900],
-//             secondary: colors.grey[700],
-//           },
-//           border: colors.grey[300],
-//         }),
-//   };
-// };
-
-// export type Theme = ReturnType<typeof themeSettings>;
+// type ThemeMode = 'light' | 'dark';
 
 // interface ThemeContextType {
+//   mode: ThemeMode;
 //   toggleColorMode: () => void;
-//   theme: Theme;
+//   colors: {
+//     background: {
+//       primary: string;
+//       secondary: string;
+//     };
+//     text: {
+//       primary: string;
+//       secondary: string;
+//     };
+//     border: string;
+//   };
 // }
 
-// export const ThemeContext = createContext<ThemeContextType>({
-//   toggleColorMode: () => {},
-//   theme: themeSettings('dark'),
-// });
+// const lightColors = {
+//   background: {
+//     primary: "bg-white",
+//     secondary: "bg-gray-50",
+//   },
+//   text: {
+//     primary: "text-gray-900",
+//     secondary: "text-gray-600",
+//   },
+//   border: "border-gray-200",
+// };
+
+// const darkColors = {
+//   background: {
+//     primary: "bg-gray-900",
+//     secondary: "bg-gray-800",
+//   },
+//   text: {
+//     primary: "text-white",
+//     secondary: "text-gray-300",
+//   },
+//   border: "border-gray-700",
+// };
+
+// export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 // interface ThemeProviderProps {
 //   children: ReactNode;
 // }
 
 // export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-//   const [mode, setMode] = useState<'light' | 'dark'>('dark');
+//   const [mode, setMode] = useState<ThemeMode>('dark');
 
-//   const colorMode = useMemo(
-//     () => ({
-//       toggleColorMode: () =>
-//         setMode((prev) => (prev === 'light' ? 'dark' : 'light')),
-//     }),
-//     []
-//   );
+//   const toggleColorMode = () => {
+//     setMode(prev => prev === 'light' ? 'dark' : 'light');
+//   };
 
-//   const theme = useMemo(() => themeSettings(mode), [mode]);
+//   const colors = mode === 'dark' ? darkColors : lightColors;
 
 //   return (
-//     <ThemeContext.Provider value={{ toggleColorMode: colorMode.toggleColorMode, theme }}>
-//       {children}
+//     <ThemeContext.Provider value={{ mode, toggleColorMode, colors }}>
+//       <div className={mode === 'dark' ? 'dark' : ''}>
+//         {children}
+//       </div>
 //     </ThemeContext.Provider>
 //   );
 // };
@@ -196,79 +74,214 @@
 //   return context;
 // };
 
+// src/contexts/ThemeContext.tsx
+import React, { createContext, useState, useContext, useMemo, ReactNode } from 'react';
 
+// Define color tokens type
+type ColorTokens = {
+  grey: { [key: number]: string };
+  primary: { [key: number]: string };
+  greenAccent: { [key: number]: string };
+  redAccent: { [key: number]: string };
+  blueAccent: { [key: number]: string };
+};
 
-import { createContext, useState, useContext, ReactNode } from "react";
+// Color design tokens
+export const tokens = (mode: 'light' | 'dark'): ColorTokens => ({
+  ...(mode === 'dark'
+    ? {
+        grey: {
+          100: "#e0e0e0",
+          200: "#c2c2c2",
+          300: "#a3a3a3",
+          400: "#858585",
+          500: "#666666",
+          600: "#525252",
+          700: "#3d3d3d",
+          800: "#292929",
+          900: "#141414"
+        },
+        primary: {
+          100: "#d0d1d5",
+          200: "#a1a4ab",
+          300: "#727681",
+          400: "#434957",
+          500: "#141b2d",
+          600: "#101624",
+          700: "#0c101b",
+          800: "#080b12",
+          900: "#040509"
+        },
+        greenAccent: {
+          100: "#dbf5ee",
+          200: "#b7ebde",
+          300: "#94e2cd",
+          400: "#70d8bd",
+          500: "#4cceac",
+          600: "#3da58a",
+          700: "#2e7c67",
+          800: "#1e5245",
+          900: "#0f2922"
+        },
+        redAccent: {
+          100: "#f8dcdb",
+          200: "#f1b9b7",
+          300: "#e99592",
+          400: "#e2726e",
+          500: "#db4f4a",
+          600: "#af3f3b",
+          700: "#832f2c",
+          800: "#58201e",
+          900: "#2c100f"
+        },
+        blueAccent: {
+          100: "#e1e2fe",
+          200: "#c3c6fd",
+          300: "#a4a9fc",
+          400: "#868dfb",
+          500: "#6870fa",
+          600: "#535ac8",
+          700: "#3e4396",
+          800: "#2a2d64",
+          900: "#151632"
+        },
+    } 
+    : {
+        grey: {
+          100: "#141414",
+          200: "#292929",
+          300: "#3d3d3d",
+          400: "#525252",
+          500: "#666666",
+          600: "#858585",
+          700: "#a3a3a3",
+          800: "#c2c2c2",
+          900: "#e0e0e0",
+        },
+        primary: {
+          100: "#040509",
+          200: "#080b12",
+          300: "#0c101b",
+          400: "#f2f0f0",
+          500: "#141b2d",
+          600: "#434957",
+          700: "#727681",
+          800: "#a1a4ab",
+          900: "#d0d1d5",
+        },
+        greenAccent: {
+          100: "#0f2922",
+          200: "#1e5245",
+          300: "#2e7c67",
+          400: "#3da58a",
+          500: "#4cceac",
+          600: "#70d8bd",
+          700: "#94e2cd",
+          800: "#b7ebde",
+          900: "#dbf5ee",
+        },
+        redAccent: {
+          100: "#2c100f",
+          200: "#58201e",
+          300: "#832f2c",
+          400: "#af3f3b",
+          500: "#db4f4a",
+          600: "#e2726e",
+          700: "#e99592",
+          800: "#f1b9b7",
+          900: "#f8dcdb",
+        },
+        blueAccent: {
+          100: "#151632",
+          200: "#2a2d64",
+          300: "#3e4396",
+          400: "#535ac8",
+          500: "#6870fa",
+          600: "#868dfb",
+          700: "#a4a9fc",
+          800: "#c3c6fd",
+          900: "#e1e2fe",
+        },
+    }),
+});
 
-type ThemeMode = 'light' | 'dark';
+// Theme settings
+export const themeSettings = (mode: 'light' | 'dark') => {
+  const colors = tokens(mode);
 
-interface ThemeContextType {
-  mode: ThemeMode;
-  toggleColorMode: () => void;
-  colors: {
-    background: {
-      primary: string;
-      secondary: string;
-    };
-    text: {
-      primary: string;
-      secondary: string;
-    };
-    border: string;
+  return {
+    colors,
+    mode,
+    palette: {
+      primary: {
+        main: mode === 'dark' ? colors.primary[500] : colors.primary[100],
+      },
+      secondary: {
+        main: colors.greenAccent[500],
+      },
+      background: {
+        default: mode === 'dark' ? colors.primary[500] : "#fcfcfc",
+      },
+    },
+    typography: {
+      fontFamily: "'Source Sans 3', sans-serif",
+      fontSize: {
+        base: "12px",
+        h1: "40px",
+        h2: "32px",
+        h3: "24px",
+        h4: "20px",
+        h5: "16px",
+        h6: "14px",
+      },
+    },
   };
+};
+
+// Context types
+interface ThemeContextType {
+  toggleColorMode: () => void;
+  mode: 'light' | 'dark';
+  theme: ReturnType<typeof themeSettings>;
 }
 
-const lightColors = {
-  background: {
-    primary: "bg-white",
-    secondary: "bg-gray-50",
-  },
-  text: {
-    primary: "text-gray-900",
-    secondary: "text-gray-600",
-  },
-  border: "border-gray-200",
-};
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
-const darkColors = {
-  background: {
-    primary: "bg-gray-900",
-    secondary: "bg-gray-800",
-  },
-  text: {
-    primary: "text-white",
-    secondary: "text-gray-300",
-  },
-  border: "border-gray-700",
-};
-
-export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
-
+// Provider props
 interface ThemeProviderProps {
   children: ReactNode;
 }
 
-export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [mode, setMode] = useState<ThemeMode>('dark');
+export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
+  const [mode, setMode] = useState<'light' | 'dark'>('dark');
 
-  const toggleColorMode = () => {
-    setMode(prev => prev === 'light' ? 'dark' : 'light');
-  };
+  const colorMode = useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prev) => {
+          const newMode = prev === 'light' ? 'dark' : 'light';
+          // Update HTML class for Tailwind
+          document.documentElement.classList.toggle('dark', newMode === 'dark');
+          return newMode;
+        });
+      },
+    }),
+    []
+  );
 
-  const colors = mode === 'dark' ? darkColors : lightColors;
+  const theme = useMemo(() => themeSettings(mode), [mode]);
 
   return (
-    <ThemeContext.Provider value={{ mode, toggleColorMode, colors }}>
-      <div className={mode === 'dark' ? 'dark' : ''}>
-        {children}
-      </div>
+    <ThemeContext.Provider value={{ ...colorMode, mode, theme }}>
+      {children}
     </ThemeContext.Provider>
   );
 };
 
-export const useTheme = () => {
+// Custom hook
+export const useTheme = (): ThemeContextType => {
   const context = useContext(ThemeContext);
-  if (!context) {
+  if (context === undefined) {
     throw new Error('useTheme must be used within a ThemeProvider');
   }
   return context;
