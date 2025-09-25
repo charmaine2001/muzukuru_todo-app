@@ -1,4 +1,3 @@
-// src/contexts/ColorModeContext.tsx
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 
 interface ColorModeContextType {
@@ -18,7 +17,7 @@ export const ColorModeProvider: React.FC<ColorModeProviderProps> = ({ children }
   const toggleColorMode = () => {
     setMode((prevMode) => {
       const newMode = prevMode === 'light' ? 'dark' : 'light';
-      // Update HTML class for Tailwind dark mode
+      
       document.documentElement.classList.toggle('dark', newMode === 'dark');
       return newMode;
     });

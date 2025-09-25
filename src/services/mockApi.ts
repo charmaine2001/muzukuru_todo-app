@@ -7,16 +7,16 @@ const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 let todos: Todo[] = [
   {
     id: '1',
-    title: 'Learn React',
-    description: 'Study React fundamentals',
+    title: 'Remind yourself you\'re awesome',
+    description: 'Fundamental self-reminder',
     completed: true,
     createdAt: new Date('2024-01-01'),
     updatedAt: new Date('2024-01-02'),
   },
   {
     id: '2',
-    title: 'Build Todo App',
-    description: 'Create a todo application with TypeScript',
+    title: 'Finish Muzukuru Todo App',
+    description: 'Make sure to complete all features and tests',
     completed: false,
     createdAt: new Date('2024-01-03'),
     updatedAt: new Date('2024-01-03'),
@@ -26,14 +26,14 @@ let todos: Todo[] = [
 let nextId = 3;
 
 export const mockApi = {
-  // GET all todos
+  // Get todos
   getTodos: async (): Promise<ApiResponse<Todo[]>> => {
     await delay(500);
     
-    // Simulate random error (10% chance)
-    if (Math.random() < 0.1) {
-      throw new Error('Failed to fetch todos');
-    }
+    // Simulate random error to test error handling
+    // if (Math.random() < 0.1) {
+    //   throw new Error('Failed to fetch todos');
+    // }
     
     return {
       data: [...todos],
@@ -42,7 +42,7 @@ export const mockApi = {
     };
   },
 
-  // POST new todo
+  // Post a new todo
   createTodo: async (todoData: CreateTodoRequest): Promise<ApiResponse<Todo>> => {
     await delay(300);
     
@@ -68,7 +68,7 @@ export const mockApi = {
     };
   },
 
-  // PUT update todo
+  // Update or put todo
   updateTodo: async (id: string, updates: UpdateTodoRequest): Promise<ApiResponse<Todo>> => {
     await delay(300);
     
@@ -96,7 +96,7 @@ export const mockApi = {
     };
   },
 
-  // DELETE todo
+  // Delete a todo
   deleteTodo: async (id: string): Promise<ApiResponse<null>> => {
     await delay(300);
     
