@@ -3,19 +3,18 @@ import { useTodos } from './hooks/useTodos';
 import { AddTodoForm } from './components/AddTodoForm';
 import { TodoList } from './components/TodoList';
 import { ErrorAlert } from './components/ErrorAlert';
-import { useTheme, ThemeProvider } from './contexts/ThemeContext';
+import {ThemeProvider } from './contexts/ThemeContext';
 import { ColorModeProvider } from './contexts/ColorModeContext';
 import Topbar from './components/TopBar';
 
 function App() {
   const { todos, loading, error, addTodo, updateTodo, deleteTodo, toggleTodo, refetch } = useTodos();
-  const { mode, theme } = useTheme();
 
   const handleAddTodo = async (title: string, description: string) => {
     try {
       await addTodo({ title, description });
     } catch (error) {
-      // Error is handled by the hook
+      
     }
   };
 
@@ -23,7 +22,7 @@ function App() {
     try {
       await updateTodo(id, { title, description });
     } catch (error) {
-      // Error is handled by the hook
+      
     }
   };
 
@@ -31,15 +30,14 @@ function App() {
     try {
       await deleteTodo(id);
     } catch (error) {
-      // Error is handled by the hook
+      
     }
   };
 
   return (
     <ThemeProvider>
       <ColorModeProvider>
-        <div className={`min-h-screen transition-colors duration-200 ${mode === 'dark' ? 'bg-gray-900' : 'bg-gray-50'}`}
-             style={{ backgroundColor: theme.palette.background.default }}
+        <div className="min-h-screen transition-colors duration-200 bg-gray-100 dark:bg-gray-900"
         >
 
           <Topbar/>
@@ -62,7 +60,7 @@ function App() {
               loading={loading}
             />
 
-            <div className="mt-8 text-sm text-gray-600 dark:text-gray-400">
+            <div className="mt-8 text-sm text-gray-600 dark:text-gray-200">
               <p>
                 Total: {todos.length} | Completed: {todos.filter(t => t.completed).length} | 
                 Pending: {todos.filter(t => !t.completed).length}

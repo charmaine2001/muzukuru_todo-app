@@ -1,78 +1,4 @@
-// import { createContext, useState, useContext, ReactNode } from "react";
 
-// type ThemeMode = 'light' | 'dark';
-
-// interface ThemeContextType {
-//   mode: ThemeMode;
-//   toggleColorMode: () => void;
-//   colors: {
-//     background: {
-//       primary: string;
-//       secondary: string;
-//     };
-//     text: {
-//       primary: string;
-//       secondary: string;
-//     };
-//     border: string;
-//   };
-// }
-
-// const lightColors = {
-//   background: {
-//     primary: "bg-white",
-//     secondary: "bg-gray-50",
-//   },
-//   text: {
-//     primary: "text-gray-900",
-//     secondary: "text-gray-600",
-//   },
-//   border: "border-gray-200",
-// };
-
-// const darkColors = {
-//   background: {
-//     primary: "bg-gray-900",
-//     secondary: "bg-gray-800",
-//   },
-//   text: {
-//     primary: "text-white",
-//     secondary: "text-gray-300",
-//   },
-//   border: "border-gray-700",
-// };
-
-// export const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
-
-// interface ThemeProviderProps {
-//   children: ReactNode;
-// }
-
-// export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-//   const [mode, setMode] = useState<ThemeMode>('dark');
-
-//   const toggleColorMode = () => {
-//     setMode(prev => prev === 'light' ? 'dark' : 'light');
-//   };
-
-//   const colors = mode === 'dark' ? darkColors : lightColors;
-
-//   return (
-//     <ThemeContext.Provider value={{ mode, toggleColorMode, colors }}>
-//       <div className={mode === 'dark' ? 'dark' : ''}>
-//         {children}
-//       </div>
-//     </ThemeContext.Provider>
-//   );
-// };
-
-// export const useTheme = () => {
-//   const context = useContext(ThemeContext);
-//   if (!context) {
-//     throw new Error('useTheme must be used within a ThemeProvider');
-//   }
-//   return context;
-// };
 
 // src/contexts/ThemeContext.tsx
 import React, { createContext, useState, useContext, useMemo, ReactNode } from 'react';
@@ -220,7 +146,7 @@ export const themeSettings = (mode: 'light' | 'dark') => {
         main: colors.greenAccent[500],
       },
       background: {
-        default: mode === 'dark' ? colors.primary[500] : "#fcfcfc",
+        default: mode === 'dark' ? colors.primary[400] : "#fcfcfc",
       },
     },
     typography: {
