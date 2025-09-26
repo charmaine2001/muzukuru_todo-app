@@ -1,9 +1,6 @@
-
-
-// src/contexts/ThemeContext.tsx
 import React, { createContext, useState, useContext, useMemo, ReactNode } from 'react';
 
-// Define color tokens type
+// Define tokens type
 type ColorTokens = {
   grey: { [key: number]: string };
   primary: { [key: number]: string };
@@ -12,7 +9,7 @@ type ColorTokens = {
   blueAccent: { [key: number]: string };
 };
 
-// Color design tokens
+// design tokens
 export const tokens = (mode: 'light' | 'dark'): ColorTokens => ({
   ...(mode === 'dark'
     ? {
@@ -186,7 +183,6 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({ children }) => {
       toggleColorMode: () => {
         setMode((prev) => {
           const newMode = prev === 'light' ? 'dark' : 'light';
-          // Update HTML class for Tailwind
           document.documentElement.classList.toggle('dark', newMode === 'dark');
           return newMode;
         });

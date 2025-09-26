@@ -15,7 +15,7 @@ export const TodoItem = ({ todo, onToggle, onUpdate, onDelete }: TodoItemProps) 
   const [editDescription, setEditDescription] = useState(todo.description);
   const { mode } = useTheme();
 
-  // Define colors based on mode
+  // Define colors
   const colors = {
     background: {
       primary: mode === 'dark' ? 'bg-gray-800' : 'bg-white',

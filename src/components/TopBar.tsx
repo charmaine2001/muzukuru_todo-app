@@ -1,4 +1,3 @@
-// src/components/Topbar.tsx
 import { useTheme } from "../contexts/ThemeContext";
 
 const Topbar = () => {
